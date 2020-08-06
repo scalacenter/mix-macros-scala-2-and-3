@@ -1,3 +1,8 @@
+import testframework._
+
 object Main extends App {
-  println(testframework.pos)
+
+  println(implicitly[Position])
+  println(implicitly[TpeTag[List[String]]])
+
 }

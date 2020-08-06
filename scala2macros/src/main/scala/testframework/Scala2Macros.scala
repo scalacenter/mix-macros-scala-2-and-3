@@ -11,4 +11,13 @@ object Scala2Macros {
     c.Expr(q"new _root_.testframework.Position($fileName, $line)")
   }
 
+  class TpeTagImpl(val c: Context) {
+    import c.universe._
+
+    def mkTag[T: c.WeakTypeTag]: c.Expr[TpeTag[T]] =
+      c.Expr[TpeTag[T]](
+        q"new _root_.testframework.TpeTag(${implicitly[c.WeakTypeTag[T]].tpe.toString})")
+
+  }
+
 }

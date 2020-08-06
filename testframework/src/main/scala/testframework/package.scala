@@ -2,5 +2,8 @@ package object testframework:
 
   import scala.language.experimental.macros
 
-  def pos: Position = macro Scala2Macros.posImpl
-  inline def pos: Position = ${ Macros.posImpl }
+  implicit def pos: Position = macro Scala2Macros.posImpl
+  inline given pos as Position = ${ Macros.posImpl }
+
+  implicit def mkTpeTag[T]: TpeTag[T] = macro Scala2Macros.TpeTagImpl.mkTag[T]
+  inline given mkTpeTag[T] as TpeTag[T] = ${ Macros.mkTpeTagImpl[T] }
