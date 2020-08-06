@@ -6,9 +6,9 @@ object Scala2Macros {
 
   def posImpl(c: Context): c.Expr[Position] = {
     import c.universe._
-    val fileName = c.enclosingPosition.source.path.split('/').last
+    val fileName = c.enclosingPosition.source.file.name
     val line = c.enclosingPosition.line
-    c.Expr(q"new testframework.Position($fileName, $line)")
+    c.Expr(q"new _root_.testframework.Position($fileName, $line)")
   }
 
 }

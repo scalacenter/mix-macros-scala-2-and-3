@@ -1,4 +1,4 @@
-val dottyVersion = "0.25.0"
+val dottyVersion = "0.26.0-RC1"
 val scala213Version = "2.13.4-bin-SNAPSHOT"
 
 lazy val scala2macros = project
