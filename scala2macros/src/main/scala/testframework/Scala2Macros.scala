@@ -19,4 +19,11 @@ object Scala2Macros {
 
   }
 
+  object Whitebox {
+    def actuallyAnIntImpl(c: scala.reflect.macros.whitebox.Context): c.Expr[Int] = {
+      import c.universe._
+      c.Expr[Int](q"23")
+    }
+  }
+
 }

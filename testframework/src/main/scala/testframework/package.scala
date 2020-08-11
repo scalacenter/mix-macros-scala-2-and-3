@@ -7,3 +7,6 @@ package object testframework:
 
   implicit def mkTpeTag[T]: TpeTag[T] = macro Scala2Macros.TpeTagImpl.mkTag[T]
   inline given mkTpeTag[T] as TpeTag[T] = ${ Macros.mkTpeTagImpl[T] }
+
+  def actuallyAnInt: Any = macro Scala2Macros.Whitebox.actuallyAnIntImpl
+  transparent inline def actuallyAnInt: Any = ${ Macros.actuallyAnIntImpl }

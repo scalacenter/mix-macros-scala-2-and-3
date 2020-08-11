@@ -12,3 +12,5 @@ object Macros:
 
   def mkTpeTagImpl[T: Type](using qctx: QuoteContext): Expr[TpeTag[T]] =
     '{ TpeTag(${Expr('[T].show)}) }
+
+  def actuallyAnIntImpl(using qctx: QuoteContext): Expr[Int] = Expr(23)
