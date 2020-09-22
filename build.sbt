@@ -1,42 +1,37 @@
-val dottyVersion = "0.26.0-RC1"
-val scala213Version = "2.13.4-bin-SNAPSHOT"
+ThisBuild / scalaVersion := "0.27.0-RC1"
+val scala213 = "2.13.4-bin-d003bf5"
+
+resolvers in Global += "scala-integration" at
+  "https://scala-ci.typesafe.com/artifactory/scala-integration/"
 
 lazy val scala2macros = project
   .dependsOn(shared)
   .settings(
     name := "testframework-scala2macros",
-    version := "0.1.0",
-
-    scalaVersion := scala213Version,
-    crossVersion := CrossVersion.constant(dottyVersion),
-
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % scala213Version
+    scalaVersion := scala213,
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scala213
   )
 
 lazy val testframework = project
   .dependsOn(shared, scala2macros)
   .settings(
     name := "testframework",
-    version := "0.1.0",
-
-    scalaVersion := dottyVersion,
-    crossVersion := CrossVersion.constant(dottyVersion),
   )
 
 lazy val shared = project
   .settings(
     name := "testframework-shared",
-    version := "0.1.0",
-    scalaVersion := dottyVersion,
-    crossVersion := CrossVersion.constant(dottyVersion)
   )
 
-lazy val root = project
-  .in(file("."))
+lazy val app2 = project
   .dependsOn(testframework)
   .settings(
-    name := "mix-macros-demo",
-    version := "0.1.0",
+    name := "mix-macros-demo-scala2",
+    scalaVersion := scala213
+  )
 
-    scalaVersion := scala213Version
+lazy val app3 = project
+  .dependsOn(testframework)
+  .settings(
+    name := "mix-macros-demo-scala3"
   )
