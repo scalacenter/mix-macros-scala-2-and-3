@@ -3,19 +3,19 @@
 In this repo we have a simple project structure simulating a test framework:
 
 - `testframework`: a library that provides a position macro that can be consumed from either Scala `2.13` or `3.0`
-  - compiled with Dotty `0.27.0-RC1`
+  - compiled with Dotty `3.0.0-M1`
   - depends on `shared`, `scala2macros`
 - `shared`: provides data structures used by macros
-  - compiled with Dotty `0.27.0-RC1`
+  - compiled with Dotty `3.0.0-M1`
 - `scala2macros`: provides implementation of macros for Scala 2
-  - compiled with Scala `2.13.4-bin-d003bf5`
+  - compiled with Scala `2.13.4`
   - depends on `shared`
 - `app2`: the demo Scala 2 application that uses the test framework
-  - compiled with Scala `2.13.4-bin-d003bf5`
+  - compiled with Scala `2.13.4`
   - depends on `testframework`
 - `app3`: replicates the demo application for `app2` but compiled with Scala 3
   - using the exact same library dependencies
-  - compiled with Dotty `0.27.0-RC1`
+  - compiled with Dotty `3.0.0-M1`
 
 The main macro we use is `def pos: Position` which summons a data structure containing the source file and line number of the callsite. This is called in [Main.scala](src/main/scala/Main.scala).
 

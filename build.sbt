@@ -1,14 +1,12 @@
-ThisBuild / scalaVersion := "0.27.0-RC1"
-val scala213 = "2.13.4-bin-d003bf5"
-
-resolvers in Global += "scala-integration" at
-  "https://scala-ci.typesafe.com/artifactory/scala-integration/"
+ThisBuild / scalaVersion := "3.0.0-M1"
+val scala213 = "2.13.4"
 
 lazy val scala2macros = project
   .dependsOn(shared)
   .settings(
     name := "testframework-scala2macros",
     scalaVersion := scala213,
+    scalacOptions += "-Ytasty-reader",
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scala213
   )
 
@@ -27,7 +25,8 @@ lazy val app2 = project
   .dependsOn(testframework)
   .settings(
     name := "mix-macros-demo-scala2",
-    scalaVersion := scala213
+    scalaVersion := scala213,
+    scalacOptions += "-Ytasty-reader",
   )
 
 lazy val app3 = project
