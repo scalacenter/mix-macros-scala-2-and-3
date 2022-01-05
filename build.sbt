@@ -1,5 +1,5 @@
-ThisBuild / scalaVersion := "3.0.0-M1"
-val scala213 = "2.13.4"
+ThisBuild / scalaVersion := "3.0.2"
+val scala213 = "2.13.7"
 
 lazy val scala2macros = project
   .dependsOn(shared)

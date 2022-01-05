@@ -1,4 +1,4 @@
-import testframework.{_, given _}
+import testframework.{_, given}
 
 object Main extends App {
 
